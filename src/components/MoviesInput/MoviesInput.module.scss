@@ -1,0 +1,51 @@
+.actions {
+  display: flex;
+  gap: 24px;
+
+  &__input {
+    display: inline-block;
+    padding: 10px 20px;
+    text-align: center;
+    background-color: #3f51b5;
+    color: white;
+    font-weight: bold;
+    max-width: 200px;
+    border-radius: 6px;
+    border: 1px solid;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+    transition: color 0.2s ease;
+    transition: border-color 0.2 ease;
+
+
+    &:hover {
+      background-color: white;
+      color: #3f51b5;
+      border-color: #3f51b5;
+    }
+  }
+
+  &__clear {
+    cursor: pointer;
+    border-radius: 8px;
+    border: 1px solid transparent;
+    padding: 0.6em 1.2em;
+    font-size: 1em;
+    font-weight: 500;
+    font-family: inherit;
+    background-color: white;
+    border: 1px solid black;
+    color: black;
+    transition: border-color 0.2s;
+
+    &:hover {
+      border-color: white;
+    }
+
+    &:disabled {
+      color: grey;
+      border-color: grey;
+      opacity: 40%;
+    }
+  }
+}

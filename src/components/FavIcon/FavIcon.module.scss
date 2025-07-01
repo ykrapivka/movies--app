@@ -1,0 +1,13 @@
+.icon {
+  cursor: pointer;
+  fill: none;  
+  &--active {
+    fill: #EB5757;
+    border: 0;
+  }
+}
+
+.icon-container {
+  display: flex;
+}
+
