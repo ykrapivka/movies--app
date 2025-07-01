@@ -5,6 +5,12 @@ export const Favorites: React.FC = () => {
   const favoriteMovies = useAppSelector(state => state.moviesState.favorites);
 
   return (
-    <MoviesList movies={favoriteMovies}  />
+    <>
+      {favoriteMovies.length > 0 ? (
+        <MoviesList movies={favoriteMovies}  />
+      ) : (
+        <p>No favotire movies yet...</p>
+      )}
+    </>
   )
 }

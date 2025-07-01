@@ -11,33 +11,32 @@ export const MoviesInput: React.FC = () => {
     return;
   };
   const parseMoviesFromText = async (e: React.ChangeEvent<HTMLInputElement>) => {
-  dispatch(setLoaded(false));
-  const movies: Movie[] = [];
-  const file = e.target.files?.[0];
+    dispatch(setLoaded(false));
+    const movies: Movie[] = [];
+    const file = e.target.files?.[0];
 
-  if (!file) return;
+    if (!file) return;
 
-  const text = await file.text();
-  const normalizedText = text.replace(/\r\n/g, '\n');
-  const moviesBlocks = normalizedText.split('\n\n');
+    const text = await file.text();
+    const normalizedText = text.replace(/\r\n/g, '\n');
+    const moviesBlocks = normalizedText.split('\n\n');
 
-  moviesBlocks.forEach(block => {
-    const lines = block.trim().split('\n');
-    if (lines.length < 4) return;
+    moviesBlocks.forEach(block => {
+      const lines = block.trim().split('\n');
+      if (lines.length < 4) return;
 
-    const title = lines[0].replace('Title: ', '').trim();
-    const year = +lines[1].replace('Release Year: ', '').trim();
-    const format = lines[2].replace('Format: ', '').trim();
-    const actors = lines[3].replace('Stars: ', '').split(', ').map(actor => actor.trim());
+      const title = lines[0].replace('Title: ', '').trim();
+      const year = +lines[1].replace('Release Year: ', '').trim();
+      const format = lines[2].replace('Format: ', '').trim();
+      const actors = lines[3].replace('Stars: ', '').split(', ').map(actor => actor.trim());
 
-    movies.push({ title, year, format, actors });
-  });
+      movies.push({ title, year, format, actors });
+    });
 
-  dispatch(uploadMoviesTxt(movies));
-  setTimeout(() => {
-    dispatch(setLoaded(true));
-  }, 2000);
-  
+    dispatch(uploadMoviesTxt(movies));
+    setTimeout(() => {
+      dispatch(setLoaded(true));
+    }, 2000);
 };
 
   return (

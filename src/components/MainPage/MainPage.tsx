@@ -8,9 +8,7 @@ export const MainPage: React.FC = () => {
   return (
     <>
       {movies.length > 0 ? (
-        <>
           <MoviesList movies={movies} />
-        </>
       ) : (
         <p>No movies loaded...</p>
       )}

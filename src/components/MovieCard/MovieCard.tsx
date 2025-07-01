@@ -1,18 +1,20 @@
 import { useAppDispatch, useAppSelector } from "../../context/store";
 import { addToFav, deleteFav } from "../../features/moviesSlice";
 import type { Movie } from "../../types/movie";
+import type { MovieServer } from "../../types/movieServer";
 import { FavIcon } from "../FavIcon/FavIcon";
 import styles from './MovieCard.module.scss';
 
 type Props = {
-  movie: Movie;
+  movie: Movie | MovieServer;
 }
 
 export const MovieCard: React.FC<Props> = ({ movie }) => {
   const dispatch = useAppDispatch();
-  const favorites = useAppSelector(state => state.moviesState.favorites);
-  const displayedActors = movie.actors?.slice(0, 3);
-  const showDots = movie.actors?.length > 3;
+  const { favorites, movies} = useAppSelector(state => state.moviesState);
+  const actorNames = movies.find(m => m.title === movie.title)?.actors || [];
+  const displayedActors = actorNames.slice(0, 3);
+  const showDots = actorNames.length > 3;
   const active = favorites.find(m => m.title.toLowerCase() === movie.title.toLowerCase())
 
   function handleFavClick() {
