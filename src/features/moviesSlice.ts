@@ -13,7 +13,7 @@ export type MoviesState = {
 const initialState: MoviesState = {
   movies: [],
   favorites: [],
-  loaded: false,
+  loaded: true,
   hasError: '',
 };
 
