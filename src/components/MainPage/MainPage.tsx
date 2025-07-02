@@ -3,7 +3,7 @@ import { useAppSelector } from "../../context/store";
 import { MoviesList } from "../MoviesList/MoviesList";
 
 export const MainPage: React.FC = () => {
-  const movies = useAppSelector(state => state.moviesState.movies)
+  const movies = useAppSelector(state => state.moviesState.movies) || [];
 
   return (
     <>

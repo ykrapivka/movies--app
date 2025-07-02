@@ -11,7 +11,7 @@ type Props = {
 
 export const MoviesList: React.FC<Props> = ({ movies }) => {
   const [searchParams,] = useSearchParams();
-  const localMovies = useAppSelector(state => state.moviesState.movies)
+  const localMovies = useAppSelector(state => state.moviesState.movies) || [];
   const query = searchParams.get('query') || '';
   const searchBy = searchParams.get('searchBy') || '';
   const sortedMovies = [...movies].sort((m1, m2) => m1.title.toLowerCase().localeCompare(m2.title.toLowerCase()));

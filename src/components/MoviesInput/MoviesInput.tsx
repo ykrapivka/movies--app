@@ -5,7 +5,7 @@ import styles from './MoviesInput.module.scss';
 
 export const MoviesInput: React.FC = () => {
   const dispatch = useAppDispatch();
-  const movies = useAppSelector(state => state.moviesState.movies);
+  const movies = useAppSelector(state => state.moviesState.movies) || [];
   const handleClearMovies = () => {
     dispatch(clearMovies())
     return;

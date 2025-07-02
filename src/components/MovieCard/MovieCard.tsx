@@ -11,7 +11,7 @@ type Props = {
 
 export const MovieCard: React.FC<Props> = ({ movie }) => {
   const dispatch = useAppDispatch();
-  const { favorites, movies} = useAppSelector(state => state.moviesState);
+  const { favorites = [], movies = [] } = useAppSelector(state => state.moviesState) || {};
   const actorNames = movies.find(m => m.title === movie.title)?.actors || [];
   const displayedActors = actorNames.slice(0, 3);
   const showDots = actorNames.length > 3;

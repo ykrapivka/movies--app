@@ -7,7 +7,7 @@ import { FavIcon } from '../FavIcon/FavIcon';
 
 
 export const Nav: React.FC = () => {
-  const favorites = useAppSelector(state => state.moviesState.favorites);
+  const favorites = useAppSelector(state => state.moviesState.favorites) || [];
   const location = useLocation();
   const [type = ''] = location.pathname.split('/').filter(item => item !== '');
   const [searchParams, setSearchParams] = useSearchParams();
